@@ -1,8 +1,8 @@
 import dotenv from 'dotenv'
-import Server from './models/server'
 import serverless from "serverless-http";
+import Server from '../models/server';
 dotenv.config
 
-const server = new Server()
+const server = new Server('prod')
 
 export const handler = serverless(server.serve);
