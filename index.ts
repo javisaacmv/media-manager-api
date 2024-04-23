@@ -5,4 +5,4 @@ dotenv.config
 
 const server = new Server()
 
-export const handler = serverless(server.serve);
+server.listen()

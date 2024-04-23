@@ -14,7 +14,7 @@ class Server {
     private paths
 
 
-    constructor(env?: string) {
+    constructor() {
         this.app = express()
         this.port = process.env.PORT || '4000'
         this.paths = {
@@ -24,7 +24,7 @@ class Server {
         }
         this.dbConnect()
 
-        this.app.use(cors({origin: ['http://localhost:3000', '*'], credentials: true}))
+        this.app.use(cors({origin: ['*', 'http://localhost:3000'], credentials: true}))
 
         this.app.use(express.json());
 
