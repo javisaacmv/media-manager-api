@@ -24,7 +24,6 @@ class Server {
         }
         this.dbConnect()
 
-        this.app.use(cors({origin: ['*', 'http://localhost:3000'], credentials: true}))
 
         this.app.use(express.json());
 
@@ -36,6 +35,7 @@ class Server {
     }
 
     routes(){
+        this.app.use(cors({origin: ['*', 'https://media-manager-qd7yepajx-javiers-projects-5c30f34c.vercel.app'], credentials: true}))
         this.app.use(this.paths.users, userRouter)
         this.app.use(this.paths.auth, authRouter)
         this.app.use(this.paths.media, mediaRouter)

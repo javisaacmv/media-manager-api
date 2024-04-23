@@ -30,7 +30,6 @@ class Server {
             media: '/api/media'
         };
         this.dbConnect();
-        this.app.use((0, cors_1.default)({ origin: ['*', 'http://localhost:3000'], credentials: true }));
         this.app.use(express_1.default.json());
         this.routes();
     }
@@ -40,6 +39,7 @@ class Server {
         });
     }
     routes() {
+        this.app.use((0, cors_1.default)({ origin: ['*', 'https://media-manager-qd7yepajx-javiers-projects-5c30f34c.vercel.app'], credentials: true }));
         this.app.use(this.paths.users, users_1.default);
         this.app.use(this.paths.auth, auth_1.default);
         this.app.use(this.paths.media, media_1.default);
