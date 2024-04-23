@@ -7,7 +7,6 @@ import dotenv from 'dotenv'
 import mediaRouter from '../routes/media'
 dotenv.config()
 
-const PROD_PATH = '.netlify/function/'
 
 class Server {
     private app: Application
@@ -19,9 +18,9 @@ class Server {
         this.app = express()
         this.port = process.env.PORT || '4000'
         this.paths = {
-            users: (env ? PROD_PATH : '') + '/api/users',
-            auth: (env ? PROD_PATH : '') + '/api/auth',
-            media: (env ? PROD_PATH : '') + '/api/media'
+            users: '/api/users',
+            auth: '/api/auth',
+            media: '/api/media'
         }
         this.dbConnect()
 
