@@ -1,9 +1,10 @@
 import express, { Application } from 'express'
-import dotenv from 'dotenv'
 import { dbConnection } from '../db/config'
 import userRouter from '../routes/users'
 import cors from 'cors'
 import authRouter from '../routes/auth'
+import dotenv from 'dotenv'
+import mediaRouter from '../routes/media'
 dotenv.config()
 
 class Server {
@@ -17,11 +18,14 @@ class Server {
         this.port = process.env.PORT || '4000'
         this.paths = {
             users: '/api/users',
-            auth: '/api/auth'
+            auth: '/api/auth',
+            media: '/api/media'
         }
         this.dbConnect()
 
         this.app.use(cors({origin: ['http://localhost:3000', '*'], credentials: true}))
+
+        this.app.use(express.json());
 
         this.routes()
     }
@@ -33,6 +37,7 @@ class Server {
     routes(){
         this.app.use(this.paths.users, userRouter)
         this.app.use(this.paths.auth, authRouter)
+        this.app.use(this.paths.media, mediaRouter)
 
     }
 
