@@ -39,7 +39,7 @@ class Server {
         });
     }
     routes() {
-        this.app.use((0, cors_1.default)({ origin: ['*', 'https://media-manager-phi.vercel.app/', 'http://localhost:3000'], credentials: true }));
+        this.app.use((0, cors_1.default)({ origin: ['*', 'https://media-manager-phi.vercel.app', 'http://localhost:3000'], credentials: true }));
         this.app.use(this.paths.users, users_1.default);
         this.app.use(this.paths.auth, auth_1.default);
         this.app.use(this.paths.media, media_1.default);

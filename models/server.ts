@@ -35,7 +35,7 @@ class Server {
     }
 
     routes(){
-        this.app.use(cors({origin: ['*', 'https://media-manager-phi.vercel.app/', 'http://localhost:3000'], credentials: true}))
+        this.app.use(cors({origin: ['*', 'https://media-manager-phi.vercel.app', 'http://localhost:3000'], credentials: true}))
         this.app.use(this.paths.users, userRouter)
         this.app.use(this.paths.auth, authRouter)
         this.app.use(this.paths.media, mediaRouter)
